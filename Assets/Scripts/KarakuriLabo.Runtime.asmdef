@@ -1,0 +1,8 @@
+{
+    "name": "KarakuriLabo.Runtime",
+    "rootNamespace": "KarakuriLabo",
+    "references": [
+        "Unity.ugui",
+        "Unity.InputSystem"
+    ]
+}

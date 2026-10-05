@@ -1,0 +1,12 @@
+{
+    "name": "KarakuriLabo.PlayModeTests",
+    "rootNamespace": "KarakuriLabo.Tests",
+    "references": [
+        "KarakuriLabo.Runtime",
+        "Unity.ugui",
+        "Unity.InputSystem"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

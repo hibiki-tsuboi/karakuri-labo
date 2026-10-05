@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StageOne.unity
+    guid: 4b510c9ae0e6c458b906a56d49459cf7
+  - enabled: 1
+    path: Assets/Scenes/StageThree.unity
+    guid: 20a00828bfb604e12a25d2e8f569e2dc
+  - enabled: 1
+    path: Assets/Scenes/StageFour.unity
+    guid: d768c1af8f1774c6f856139eb623eb53
+  - enabled: 1
+    path: Assets/Scenes/StageFive.unity
+    guid: 2c13aa50bfd4547bab8c9f5f39f0450e
+  - enabled: 1
+    path: Assets/Scenes/StageSpring.unity
+    guid: 9c6912622cf784e44bec07f0f26faf15
+  - enabled: 1
+    path: Assets/Scenes/StageCurve.unity
+    guid: 8741227664e0941bdbf80c0733cd79d0
+  - enabled: 1
+    path: Assets/Scenes/StageFunnel.unity
+    guid: 1f2d693c8d90c495eb2358d26cee69af
+  - enabled: 1
+    path: Assets/Scenes/StageLift.unity
+    guid: 60f2f80ca528846f290a706c6a34b94a
+  - enabled: 1
+    path: Assets/Scenes/StageFan.unity
+    guid: 27dafa5f956434bac9b64450230fc0c0
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
