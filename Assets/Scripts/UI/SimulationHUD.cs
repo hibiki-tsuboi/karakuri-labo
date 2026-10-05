@@ -8,9 +8,17 @@ namespace KarakuriLabo
     {
         [SerializeField] private GameManager gameManager;
         [SerializeField] private Button simulationButton;
+        [SerializeField] private PlacementManager placement;
         [SerializeField] private Text buttonLabel;
         [SerializeField] private Color playColor = new Color32(37, 112, 88, 255);
         [SerializeField] private Color resetColor = new Color32(52, 76, 112, 255);
+
+        public void ConfigurePlacement(PlacementManager controller) => placement = controller;
+
+        private bool CanAct => gameManager != null && (placement == null ||
+            (placement.isActiveAndEnabled && !placement.IsDragging && !placement.IsOrbiting));
+
+        private void LateUpdate() => Refresh();
 
         private void OnEnable()
         {
@@ -71,7 +79,7 @@ namespace KarakuriLabo
 
         private void HandleClick()
         {
-            if (gameManager == null)
+            if (!CanAct)
             {
                 return;
             }
@@ -90,11 +98,12 @@ namespace KarakuriLabo
             bool editing = gameManager != null && gameManager.State == GameState.Edit;
             if (buttonLabel != null)
             {
-                buttonLabel.text = editing ? "PLAY" : "RESET";
+                buttonLabel.text = editing ? GameText.Play :
+                    gameManager != null && gameManager.State == GameState.Failed ? GameText.Adjust : GameText.Reset;
             }
             if (simulationButton != null)
             {
-                simulationButton.interactable = gameManager != null;
+                simulationButton.interactable = CanAct;
                 if (simulationButton.targetGraphic != null)
                 {
                     simulationButton.targetGraphic.color = editing ? playColor : resetColor;

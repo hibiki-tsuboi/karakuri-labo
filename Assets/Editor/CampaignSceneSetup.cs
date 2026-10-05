@@ -60,6 +60,8 @@ namespace KarakuriLabo.Editor
                     hud.GetComponent<PlacementHUD>().ConfigureClearHint(hasNext
                         ? "CLEAR!  /  NEXT TO CONTINUE" : "ALL STAGES CLEAR!  /  RESET TO PLAY AGAIN");
                     StageSelectSetup.Configure(hud, Scenes, Titles);
+                    FailureSceneSetup.Configure(hud);
+                    JapaneseSceneSetup.Configure(hud);
                     LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)toolbar);
                     EditorSceneManager.MarkSceneDirty(scene);
                     if (!EditorSceneManager.SaveScene(scene))

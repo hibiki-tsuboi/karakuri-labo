@@ -37,16 +37,16 @@ namespace KarakuriLabo.Tests
             Assert.That(GameObject.Find("FixedShortRamp"), Is.Null);
             Assert.That(GameObject.Find("Stage/ValleyFloor").GetComponent<Collider>().bounds.max.y,
                 Is.LessThan(-2f));
-            Assert.That(FindText("StageLabel").text, Does.Contain("DEPTH CROSSING"));
-            Assert.That(FindText("GoalHint").text, Does.Contain("BACK TO FRONT"));
-            Assert.That(FindButton("AddHighRampButton").GetComponentInChildren<Text>().text, Is.EqualTo("+ HIGH (1)"));
-            Assert.That(FindButton("AddLowRampButton").GetComponentInChildren<Text>().text, Is.EqualTo("+ LOW (1)"));
+            Assert.That(FindText("StageLabel").text, Does.Contain("おくから てまえへ"));
+            Assert.That(FindText("GoalHint").text, Does.Contain("おくから てまえへ"));
+            Assert.That(FindButton("AddHighRampButton").GetComponentInChildren<Text>().text, Is.EqualTo("たかい さか\nあと 1こ"));
+            Assert.That(FindButton("AddLowRampButton").GetComponentInChildren<Text>().text, Is.EqualTo("ひくい さか\nあと 1こ"));
             Assert.That(FindButton("NextButton").gameObject.activeInHierarchy, Is.False);
             AssertCompactLayoutAndRestore();
             var high = spawner.AddPart(0);
             var low = spawner.AddPart(1);
-            Assert.That(high.DisplayName, Is.EqualTo("HIGH"));
-            Assert.That(low.DisplayName, Is.EqualTo("LOW"));
+            Assert.That(high.DisplayName, Is.EqualTo("たかい さか"));
+            Assert.That(low.DisplayName, Is.EqualTo("ひくい さか"));
             Assert.That(high.transform.position.y, Is.EqualTo(1.6f).Within(0.001f));
             Assert.That(low.transform.position.y, Is.EqualTo(0.68f).Within(0.001f));
             foreach (int index in new[] { -1, 0, 1, 2 })
@@ -72,7 +72,7 @@ namespace KarakuriLabo.Tests
                 }
                 gm.StartSimulation();
                 yield return new WaitForSeconds(4f);
-                Assert.That(gm.State, Is.EqualTo(GameState.Playing), $"Only part {onlyPart}");
+                Assert.That(gm.State, Is.EqualTo(GameState.Playing).Or.EqualTo(GameState.Failed), $"Only part {onlyPart}");
                 Assert.That(gm.HasReachedGoal, Is.False);
                 gm.ResetSimulation();
                 yield return null;
@@ -97,7 +97,7 @@ namespace KarakuriLabo.Tests
                 gm.StartSimulation();
                 yield return new WaitForSeconds(4f);
                 Assert.That(gm.HasReachedGoal, Is.False, $"Incorrect layout {layout}");
-                Assert.That(gm.State, Is.EqualTo(GameState.Playing));
+                Assert.That(gm.State, Is.EqualTo(GameState.Playing).Or.EqualTo(GameState.Failed));
                 gm.ResetSimulation();
             }
         }
@@ -143,7 +143,7 @@ namespace KarakuriLabo.Tests
                 Assert.That(highProbe.Contacts, Is.GreaterThan(0));
                 Assert.That(lowProbe.Contacts, Is.GreaterThan(0));
                 Assert.That(start.z - ball.transform.position.z, Is.GreaterThan(3f));
-                Assert.That(FindText("GoalHint").text, Does.Contain("NEXT"));
+                Assert.That(FindText("GoalHint").text, Does.Contain("つぎへ"));
                 Assert.That(Object.FindAnyObjectByType<StageManager>().CanAdvance, Is.True);
                 Assert.That(FindButton("NextButton").gameObject.activeInHierarchy, Is.True);
                 yield return new WaitForSeconds(2f);
@@ -174,7 +174,7 @@ namespace KarakuriLabo.Tests
             Assert.That(spawner.GetRemainingCount(0), Is.EqualTo(0));
             Assert.That(spawner.GetRemainingCount(1), Is.EqualTo(1));
             var replacement = spawner.AddPart(1);
-            Assert.That(replacement.DisplayName, Is.EqualTo("LOW"));
+            Assert.That(replacement.DisplayName, Is.EqualTo("ひくい さか"));
             gm.StartSimulation();
             yield return new WaitForFixedUpdate();
             gm.ResetSimulation();

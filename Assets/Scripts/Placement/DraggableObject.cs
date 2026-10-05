@@ -9,7 +9,7 @@ namespace KarakuriLabo
         [SerializeField] private string displayName = "RAMP";
 
         public bool IsSelected { get; private set; }
-        public string DisplayName => string.IsNullOrWhiteSpace(displayName) ? "PART" : displayName;
+        public string DisplayName => GameText.PartName(displayName);
 
         private void Awake()
         {

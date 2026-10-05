@@ -158,7 +158,7 @@ namespace KarakuriLabo.Tests
             var button = FindSoundButton();
             var label = button.GetComponentInChildren<Text>();
             Assert.That(audio.IsMuted, Is.False);
-            Assert.That(label.text, Is.EqualTo("SOUND ON"));
+            Assert.That(label.text, Is.EqualTo("おと：あり"));
             touchscreen = InputSystem.AddDevice<Touchscreen>();
 
             yield return Touch(141, TouchPhase.Began, ButtonPoint(button));
@@ -167,7 +167,7 @@ namespace KarakuriLabo.Tests
             yield return Touch(141, TouchPhase.Ended, ButtonPoint(button));
             Assert.That(audio.IsMuted, Is.True);
             Assert.That(source.mute, Is.True);
-            Assert.That(label.text, Is.EqualTo("SOUND OFF"));
+            Assert.That(label.text, Is.EqualTo("おと：なし"));
             Assert.That(ramp.transform.position, Is.EqualTo(position));
             Assert.That(Quaternion.Angle(ramp.transform.rotation, rotation), Is.LessThan(0.05f));
 
@@ -180,12 +180,12 @@ namespace KarakuriLabo.Tests
             yield return null;
             Assert.That(audio.IsMuted, Is.True);
             Assert.That(source.mute, Is.True);
-            Assert.That(label.text, Is.EqualTo("SOUND OFF"));
+            Assert.That(label.text, Is.EqualTo("おと：なし"));
             yield return Touch(142, TouchPhase.Began, ButtonPoint(button));
             yield return Touch(142, TouchPhase.Ended, ButtonPoint(button));
             Assert.That(audio.IsMuted, Is.False);
             Assert.That(source.mute, Is.False);
-            Assert.That(label.text, Is.EqualTo("SOUND ON"));
+            Assert.That(label.text, Is.EqualTo("おと：あり"));
             Assert.That(source.isPlaying, Is.False, "Unmuting must not replay a previous round's sound.");
         }
 

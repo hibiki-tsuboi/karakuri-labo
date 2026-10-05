@@ -49,7 +49,7 @@ namespace KarakuriLabo.Tests
                     gm.StartSimulation();
                     Assert.That(Object.FindAnyObjectByType<StageSelectHUD>().TryOpen(), Is.False, "A running attempt must be reset before changing stages.");
                     deadline = Time.realtimeSinceStartup + 7;
-                    while (gm.State != GameState.Clear && Time.realtimeSinceStartup < deadline) yield return null;
+                    while (gm.State == GameState.Playing && Time.realtimeSinceStartup < deadline) yield return null;
                     Assert.That(gm.State, Is.EqualTo(GameState.Clear), Scenes[i] + ": " + Object.FindAnyObjectByType<BallController>().Body.position);
                     Assert.That(part.GetComponent<BallMechanism>().WasUsed, Is.True);
                     Assert.That(Object.FindAnyObjectByType<StageSelectHUD>().TryOpen(), Is.True);
@@ -73,7 +73,7 @@ namespace KarakuriLabo.Tests
                 var gm = Object.FindAnyObjectByType<GameManager>();
                 Simulate(gm, 14);
                 yield return null;
-                Assert.That(gm.State, Is.EqualTo(GameState.Playing), Scenes[i] + " facing backwards");
+                Assert.That(gm.State, Is.EqualTo(GameState.Failed), Scenes[i] + " facing backwards");
             }
             yield return SceneManager.LoadSceneAsync("StageFan");
             yield return null;
@@ -116,7 +116,7 @@ namespace KarakuriLabo.Tests
                 var gm = Object.FindAnyObjectByType<GameManager>();
                 Simulate(gm, 14);
                 yield return null;
-                Assert.That(gm.State, Is.EqualTo(GameState.Playing), Scenes[index] + " without a tool");
+                Assert.That(gm.State, Is.EqualTo(GameState.Failed), Scenes[index] + " without a tool");
                 gm.ResetSimulation();
                 var spawner = Object.FindAnyObjectByType<PartSpawner>();
                 var part = spawner.AddPart(0);
@@ -126,7 +126,7 @@ namespace KarakuriLabo.Tests
                 Assert.That(part.GetComponentsInChildren<Collider>().Any(c => !c.isTrigger), Is.True, "Every tool must be touch-selectable.");
                 Simulate(gm, 14);
                 yield return null;
-                Assert.That(gm.State, Is.EqualTo(GameState.Playing), Scenes[index] + " with the tool on its storage position");
+                Assert.That(gm.State, Is.EqualTo(GameState.Failed), Scenes[index] + " with the tool on its storage position");
                 gm.ResetSimulation();
                 var placement = Object.FindAnyObjectByType<PlacementManager>();
                 Assert.That(placement.SelectObject(part), Is.True);
@@ -182,10 +182,11 @@ namespace KarakuriLabo.Tests
                 Physics.simulationMode = SimulationMode.Script;
                 Physics.SyncTransforms();
                 manager.StartSimulation();
-                for (int step = 0; step < seconds / 0.02f && manager.State != GameState.Clear; step++)
+                for (int step = 0; step < seconds / 0.02f && manager.State == GameState.Playing; step++)
                 {
                     foreach (BallMechanism mechanism in mechanisms) mechanism.StepPhysics(0.02f);
                     Physics.Simulate(0.02f);
+                    Object.FindAnyObjectByType<AttemptMonitor>()?.StepAttempt(0.02f);
                     if (step % 25 == 0) trace?.Add($"{step * 0.02f:F1}s: {ball.Body.position:F2}, velocity {ball.Body.linearVelocity:F2}, used={mechanisms.Any(m => m.WasUsed)}, goal={manager.HasReachedGoal}");
                     if (manager.HasReachedGoal && mechanisms.Length > 0 && mechanisms.All(m => m.WasUsed)) break;
                 }

@@ -41,6 +41,7 @@ namespace KarakuriLabo.Editor
                     Vector3 fallback = name == "StageFive" ? new Vector3(-1.1f, 4.9f, 4.7f) :
                         name == "StageFour" ? new Vector3(-0.5f, 0.2f, -0.7f) : new Vector3(0, 0.8f, 0);
                     ConfigureScene(existing != null ? existing.HomeFocus : fallback);
+                    JapaneseSceneSetup.Configure(GameObject.Find("HUD").transform);
                     EditorSceneManager.MarkSceneDirty(scene);
                     if (!EditorSceneManager.SaveScene(scene))
                     {

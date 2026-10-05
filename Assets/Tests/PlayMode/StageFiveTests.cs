@@ -77,7 +77,7 @@ namespace KarakuriLabo.Tests
                 var gm = Object.FindAnyObjectByType<GameManager>();
                 Vector3 start = Object.FindAnyObjectByType<BallController>().transform.position;
                 Simulate(gm, 12);
-                Assert.That(gm.State, Is.EqualTo(GameState.Playing), "Missing/wrong part " + missing);
+                Assert.That(gm.State, Is.EqualTo(GameState.Failed), "Missing/wrong part " + missing);
                 Assert.That(gm.HasReachedGoal, Is.False);
                 gm.ResetSimulation();
                 Assert.That(Vector3.Distance(Object.FindAnyObjectByType<BallController>().transform.position, start), Is.LessThan(0.001f));
@@ -116,7 +116,7 @@ namespace KarakuriLabo.Tests
             Assert.That(nav.IsFollowing, Is.True);
             bool sawMiddle = false;
             float deadline = Time.realtimeSinceStartup + 12;
-            while (gm.State != GameState.Clear && Time.realtimeSinceStartup < deadline)
+            while (gm.State == GameState.Playing && Time.realtimeSinceStartup < deadline)
             {
                 sawMiddle |= nav.CurrentView == 1;
                 yield return null;
@@ -247,9 +247,10 @@ namespace KarakuriLabo.Tests
                 Physics.simulationMode = SimulationMode.Script;
                 Physics.SyncTransforms();
                 gm.StartSimulation();
-                for (int i = 0; i < seconds / 0.02f && gm.State != GameState.Clear; i++)
+                for (int i = 0; i < seconds / 0.02f && gm.State == GameState.Playing; i++)
                 {
                     Physics.Simulate(0.02f);
+                    Object.FindAnyObjectByType<AttemptMonitor>()?.StepAttempt(0.02f);
                 }
             }
             finally

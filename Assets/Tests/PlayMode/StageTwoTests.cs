@@ -54,7 +54,7 @@ namespace KarakuriLabo.Tests
             Assert.That(Object.FindAnyObjectByType<DominoGate>().IsOpen, Is.False);
             Assert.That(GameObject.Find("GateBarrier").GetComponent<Rigidbody>().isKinematic, Is.True);
             Assert.That(FindText("DominoProgress").text, Does.Contain("0 / 3"));
-            Assert.That(FindButton("AddDominoButton").GetComponentInChildren<Text>().text, Does.Contain("(3)"));
+            Assert.That(FindButton("AddDominoButton").GetComponentInChildren<Text>().text, Does.Contain("あと 3こ"));
             Assert.That(stage.CanAdvance, Is.False);
             Assert.That(stage.TryAdvance(), Is.False);
             Assert.That(FindButton("NextButton").gameObject.activeInHierarchy, Is.False);
@@ -188,14 +188,14 @@ namespace KarakuriLabo.Tests
                 yield return Tap(201 + index * 2, FindButton("AddDominoButton"));
                 dominoes[index] = placement.SelectedObject;
                 Assert.That(dominoes[index], Is.Not.Null);
-                Assert.That(dominoes[index].DisplayName, Is.EqualTo("DOMINO"));
+                Assert.That(dominoes[index].DisplayName, Is.EqualTo("ドミノ"));
                 Assert.That(spawner.GetRemainingCount(0), Is.EqualTo(2 - index));
                 yield return DragTo(202 + index * 2, dominoes[index], SolutionPositions[index]);
                 dominoes[index].gameObject.AddComponent<DominoBallContactProbe>();
             }
             Assert.That(spawner.AddPart(0), Is.Null);
             Assert.That(FindButton("AddDominoButton").interactable, Is.False);
-            Assert.That(FindButton("AddDominoButton").GetComponentInChildren<Text>().text, Does.Contain("(0)"));
+            Assert.That(FindButton("AddDominoButton").GetComponentInChildren<Text>().text, Does.Contain("あと 0こ"));
             var rotations = dominoes.Select(part => part.transform.rotation).ToArray();
             var expectedPositions = SolutionPositions.ToArray();
 
@@ -230,8 +230,8 @@ namespace KarakuriLabo.Tests
                 }
                 Assert.That(dominoes.All(part => part.GetComponent<DominoChainMember>().HasToppled), Is.True);
                 Assert.That(FindText("DominoProgress").text, Does.Contain("3 / 3"));
-                Assert.That(FindText("DominoProgress").text, Does.EndWith("CLEAR!"));
-                Assert.That(FindText("GoalHint").text, Does.Contain("NEXT TO CONTINUE"));
+                Assert.That(FindText("DominoProgress").text, Does.EndWith("できた！"));
+                Assert.That(FindText("GoalHint").text, Does.Contain("「つぎへ」で すすもう"));
                 Assert.That(FindText("ClearText").enabled, Is.True);
                 Assert.That(stage.CanAdvance, Is.True);
                 Assert.That(FindButton("NextButton").gameObject.activeInHierarchy, Is.True);

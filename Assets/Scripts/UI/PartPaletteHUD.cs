@@ -102,7 +102,7 @@ namespace KarakuriLabo
                 Button button = addButtons[index];
                 if (button != null)
                 {
-                    button.gameObject.SetActive(gameManager == null || gameManager.State != GameState.Clear);
+                    button.gameObject.SetActive(gameManager == null || (gameManager.State != GameState.Clear && gameManager.State != GameState.Failed));
                     button.interactable = editing && spawner != null && spawner.CanAddPart(index);
                 }
                 if (index < labelTexts.Length && labelTexts[index] != null)
@@ -110,7 +110,7 @@ namespace KarakuriLabo
                     int remaining = spawner != null ? spawner.GetRemainingCount(index) : -1;
                     labelTexts[index].text = remaining < 0
                         ? buttonLabels[index]
-                        : buttonLabels[index] + " (" + remaining + ")";
+                        : buttonLabels[index] + "\nあと " + remaining + "こ";
                 }
             }
         }

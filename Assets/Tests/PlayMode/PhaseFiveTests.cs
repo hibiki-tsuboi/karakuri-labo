@@ -186,7 +186,7 @@ namespace KarakuriLabo.Tests
             Assert.That(root.IsSelected, Is.True);
             var label = Object.FindObjectsByType<Text>(FindObjectsInactive.Include)
                 .Single(text => text.name == "GoalHint");
-            Assert.That(label.text, Does.Contain("SEESAW SELECTED"));
+            Assert.That(label.text, Does.Contain("シーソーを おしたまま"));
             yield return Touch(91, TouchPhase.Moved, pointer + delta);
             yield return Touch(91, TouchPhase.Ended, pointer + delta);
             Assert.That(placement.IsDragging, Is.False);

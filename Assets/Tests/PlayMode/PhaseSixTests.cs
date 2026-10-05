@@ -15,7 +15,7 @@ namespace KarakuriLabo.Tests
     {
         private static readonly string[] AddButtonNames =
             { "AddRampButton", "AddDominoButton", "AddSeesawButton" };
-        private static readonly string[] PartNames = { "RAMP", "DOMINO", "SEESAW" };
+        private static readonly string[] PartNames = { "さか", "ドミノ", "シーソー" };
         private Touchscreen touchscreen;
 
         [UnityTearDown]
@@ -65,7 +65,7 @@ namespace KarakuriLabo.Tests
                 Assert.That(FindButton("RotateButton").interactable, Is.True);
                 var hint = Object.FindObjectsByType<Text>(FindObjectsInactive.Include)
                     .Single(text => text.name == "GoalHint");
-                Assert.That(hint.text, Does.Contain(PartNames[index] + " SELECTED"));
+                Assert.That(hint.text, Does.Contain(PartNames[index] + "を おしたまま"));
 
                 var descendants = added.GetComponentsInChildren<Transform>(true);
                 yield return Tap(102 + index * 2, FindButton("DeleteButton"));
@@ -186,7 +186,7 @@ namespace KarakuriLabo.Tests
             Assert.That(descendants.All(child => child == null), Is.True);
             Assert.That(FindParts().Length, Is.EqualTo(initialCount));
 
-            var originalDomino = FindParts().First(part => part.DisplayName == "DOMINO");
+            var originalDomino = FindParts().First(part => part.DisplayName == "ドミノ");
             Assert.That(placement.SelectObject(originalDomino), Is.True);
             Assert.That(placement.DeleteSelected(), Is.True);
             for (var run = 0; run < 2; run++)

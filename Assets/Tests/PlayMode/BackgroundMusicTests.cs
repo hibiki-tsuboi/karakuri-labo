@@ -65,7 +65,7 @@ namespace KarakuriLabo.Tests
             button.onClick.Invoke();
             Assert.That(audio.IsMuted, Is.True);
             Assert.That(music.mute, Is.True);
-            Assert.That(label.text, Is.EqualTo("SOUND OFF"));
+            Assert.That(label.text, Is.EqualTo("おと：なし"));
             Assert.That(audio.GetComponent<AudioSource>().isPlaying, Is.False);
             yield return new WaitForSecondsRealtime(0.2f);
             Assert.That(music.time, Is.GreaterThan(before), "Muting keeps the music timeline running.");
@@ -73,7 +73,7 @@ namespace KarakuriLabo.Tests
             button.onClick.Invoke();
             Assert.That(audio.IsMuted, Is.False);
             Assert.That(music.mute, Is.False);
-            Assert.That(label.text, Is.EqualTo("SOUND ON"));
+            Assert.That(label.text, Is.EqualTo("おと：あり"));
             yield return new WaitForSecondsRealtime(0.7f);
             Assert.That(music.time, Is.GreaterThan(before));
             Assert.That(music.volume, Is.EqualTo(0.24f).Within(0.001f));

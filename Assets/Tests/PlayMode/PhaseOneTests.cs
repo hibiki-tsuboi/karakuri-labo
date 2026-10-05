@@ -98,7 +98,7 @@ namespace KarakuriLabo.Tests
 
             Assert.That(manager.State, Is.EqualTo(GameState.Clear));
             Assert.That(clearText.gameObject.activeInHierarchy && clearText.enabled, Is.True);
-            Assert.That(clearText.text, Is.EqualTo("CLEAR!"));
+            Assert.That(clearText.text, Is.EqualTo("やったね！"));
 
             manager.StartSimulation();
             Assert.That(manager.State, Is.EqualTo(GameState.Clear),
@@ -133,7 +133,7 @@ namespace KarakuriLabo.Tests
                 $"Ball did not reach Goal within 12 seconds. Last position: {ball.transform.position}");
             Assert.That(Vector3.Distance(startPosition, ball.transform.position), Is.GreaterThan(0.5f));
             Assert.That(clearText.gameObject.activeInHierarchy && clearText.enabled, Is.True);
-            Assert.That(clearText.text, Is.EqualTo("CLEAR!"));
+            Assert.That(clearText.text, Is.EqualTo("やったね！"));
         }
 
         private GameObject CreateObject(string name)

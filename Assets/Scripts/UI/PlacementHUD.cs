@@ -12,9 +12,9 @@ namespace KarakuriLabo
         [SerializeField] private Button deleteButton;
         [SerializeField] private Text selectionLabel;
         [SerializeField] private Text modeLabel;
-        [SerializeField] private string editHint = "ADD A PART  /  TAP TO SELECT";
+        [SerializeField] private string editHint = GameText.EditHint;
         [SerializeField] private string selectedHint = "";
-        [SerializeField] private string clearHint = "CLEAR!  /  RESET TO TRY AGAIN";
+        [SerializeField] private string clearHint = GameText.ClearHint;
 
         private void OnEnable()
         {
@@ -128,12 +128,12 @@ namespace KarakuriLabo
                 placement.SelectedObject.isActiveAndEnabled && placement.CanModifyParts;
             if (rotateButton != null)
             {
-                rotateButton.gameObject.SetActive(gameManager == null || gameManager.State != GameState.Clear);
+                rotateButton.gameObject.SetActive(gameManager == null || (gameManager.State != GameState.Clear && gameManager.State != GameState.Failed));
                 rotateButton.interactable = canEditSelection;
             }
             if (deleteButton != null)
             {
-                deleteButton.gameObject.SetActive(gameManager == null || gameManager.State != GameState.Clear);
+                deleteButton.gameObject.SetActive(gameManager == null || (gameManager.State != GameState.Clear && gameManager.State != GameState.Failed));
                 deleteButton.interactable = canEditSelection;
             }
         }
@@ -147,16 +147,19 @@ namespace KarakuriLabo
             {
                 selectionLabel.text = editing
                     ? (selected ? (!string.IsNullOrEmpty(selectedHint) ? selectedHint
-                            : placement.SelectedObject.DisplayName + " SELECTED  /  DRAG TO MOVE")
+                            : placement.SelectedObject.DisplayName + "を おしたまま うごかそう")
                         : editHint)
                     : gameManager != null && gameManager.State == GameState.Clear
                         ? clearHint
-                        : "RESET TO EDIT THE LAYOUT";
+                        : gameManager != null && gameManager.State == GameState.Failed
+                            ? GameText.FailedHint
+                            : GameText.PlayingHint;
             }
             if (modeLabel != null)
             {
-                modeLabel.text = editing ? "EDIT MODE" :
-                    gameManager != null && gameManager.State == GameState.Clear ? "CLEAR" : "PLAYING";
+                modeLabel.text = editing ? GameText.EditMode :
+                    gameManager != null && gameManager.State == GameState.Clear ? GameText.Clear :
+                    gameManager != null && gameManager.State == GameState.Failed ? GameText.TryAgain : GameText.Playing;
             }
         }
     }

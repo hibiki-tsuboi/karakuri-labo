@@ -257,8 +257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 82, y: -28}
-  m_SizeDelta: {x: 500, y: 42}
+  m_AnchoredPosition: {x: 82, y: -20}
+  m_SizeDelta: {x: 500, y: 48}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &74050122
 MonoBehaviour:
@@ -281,9 +281,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
     m_FontSize: 30
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -292,8 +292,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: KARAKURI
+    m_LineSpacing: 1.1
+  m_Text: "\u304B\u3089\u304F\u308A\u30E9\u30DC"
 --- !u!222 &74050123
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -540,9 +540,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
     m_FontSize: 20
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -551,8 +551,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: + SEESAW
+    m_LineSpacing: 1.1
+  m_Text: "\u30B7\u30FC\u30BD\u30FC"
 --- !u!222 &94190778
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -685,9 +685,9 @@ MonoBehaviour:
   deleteButton: {fileID: 1545331315}
   selectionLabel: {fileID: 1188601762}
   modeLabel: {fileID: 1932790161}
-  editHint: CONNECT THE DOMINOES TO THE SWITCH  /  OPEN THE GATE
-  selectedHint: BUILD A CHAIN BESIDE THE BALL LANE  /  THEN PLAY
-  clearHint: CLEAR!  /  NEXT TO CONTINUE
+  editHint: "\u30C9\u30DF\u30CE\u3092 \u305F\u304A\u3057\u3066 \u3068\u3073\u3089\u3092 \u3042\u3051\u3088\u3046"
+  selectedHint: "\u30C9\u30DF\u30CE\u3092 \u30B9\u30A4\u30C3\u30C1\u307E\u3067 \u306A\u3089\u3079\u3088\u3046"
+  clearHint: "\u3084\u3063\u305F\u306D\uFF01 \u300C\u3064\u304E\u3078\u300D\u3067 \u3059\u3059\u3082\u3046"
 --- !u!114 &100511229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,6 +719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: KarakuriLabo.Runtime::KarakuriLabo.SimulationHUD
   gameManager: {fileID: 919406041}
   simulationButton: {fileID: 1119416602}
+  placement: {fileID: 0}
   buttonLabel: {fileID: 204958970}
   playColor: {r: 0.8509804, g: 0.4117647, b: 0.30980393, a: 1}
   resetColor: {r: 0.19215687, g: 0.36862746, b: 0.3882353, a: 1}
@@ -739,7 +740,7 @@ MonoBehaviour:
   addButtons:
   - {fileID: 493948261}
   buttonLabels:
-  - + DOMINO
+  - "\u30C9\u30DF\u30CE"
 --- !u!114 &100511232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,9 +1507,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
-    m_FontSize: 27
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
+    m_FontSize: 26
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -1517,8 +1518,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: PLAY
+    m_LineSpacing: 1.1
+  m_Text: "\u30B9\u30BF\u30FC\u30C8"
 --- !u!222 &204958971
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2214,8 +2215,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e518d81161c8e4b75be123b3a1d553d6, type: 3}
-    m_FontSize: 21
+    m_Font: {fileID: 12800000, guid: dc0cbdea1e3ee42edb98d15a0d912d63, type: 3}
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2225,8 +2226,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: DOMINOES 0 / 3  /  GATE CLOSED
+    m_LineSpacing: 1.1
+  m_Text: "\u30C9\u30DF\u30CE 0 / 3 \uFF0F \u3068\u3073\u3089"
 --- !u!222 &331792081
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2770,7 +2771,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -24, y: -228}
-  m_SizeDelta: {x: 220, y: 52}
+  m_SizeDelta: {x: 240, y: 80}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &620668402
 MonoBehaviour:
@@ -2785,7 +2786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39607844, g: 0.49019608, b: 0.49019608, a: 1}
+  m_Color: {r: 0.23529412, g: 0.38431373, b: 0.39607844, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2793,8 +2794,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e518d81161c8e4b75be123b3a1d553d6, type: 3}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: dc0cbdea1e3ee42edb98d15a0d912d63, type: 3}
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2804,10 +2805,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: '1 FINGER: ROTATE
-
-    2 FINGERS: PAN / ZOOM'
+    m_LineSpacing: 1.1
+  m_Text: "\u3086\u30731\u307D\u3093\u3067 \u304F\u308B\u304F\u308B\n\u3086\u30732\u307B\u3093\u3067 \u3044\u3069\u3046\n\u3086\u3073\u3092 \u3072\u308D\u3052\u3066 \u304A\u304A\u304D\u304F"
 --- !u!222 &620668403
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3336,8 +3335,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
-    m_FontSize: 26
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -3347,8 +3346,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: K
+    m_LineSpacing: 1.1
+  m_Text: "\u304B"
 --- !u!222 &744010857
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3456,9 +3455,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
     m_FontSize: 20
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -3467,8 +3466,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: VIEW RESET
+    m_LineSpacing: 1.1
+  m_Text: "\u307F\u304B\u305F\u3092 \u3082\u3069\u3059"
 --- !u!222 &809451225
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3774,8 +3773,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
-    m_FontSize: 78
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
+    m_FontSize: 68
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -3785,8 +3784,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: CLEAR!
+    m_LineSpacing: 1.1
+  m_Text: "\u3084\u3063\u305F\u306D\uFF01"
 --- !u!114 &864440930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4027,9 +4026,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
     m_FontSize: 20
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -4038,8 +4037,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: SOUND ON
+    m_LineSpacing: 1.1
+  m_Text: "\u304A\u3068\uFF1A\u3042\u308A"
 --- !u!222 &919864514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4908,8 +4907,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e518d81161c8e4b75be123b3a1d553d6, type: 3}
-    m_FontSize: 17
+    m_Font: {fileID: 12800000, guid: dc0cbdea1e3ee42edb98d15a0d912d63, type: 3}
+    m_FontSize: 19
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -4919,8 +4918,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: CONNECT THE DOMINOES TO THE SWITCH  /  OPEN THE GATE
+    m_LineSpacing: 1.1
+  m_Text: "\u30C9\u30DF\u30CE\u3092 \u305F\u304A\u3057\u3066 \u3068\u3073\u3089\u3092 \u3042\u3051\u3088\u3046"
 --- !u!222 &1188601763
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7716,9 +7715,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
     m_FontSize: 20
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -7727,8 +7726,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: DELETE
+    m_LineSpacing: 1.1
+  m_Text: "\u3057\u307E\u3046"
 --- !u!222 &1240672622
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8502,9 +8501,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
     m_FontSize: 20
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -8513,8 +8512,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: "ROTATE +15\xB0"
+    m_LineSpacing: 1.1
+  m_Text: "\u307E\u308F\u3059"
 --- !u!222 &1404884475
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8741,9 +8740,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
     m_FontSize: 20
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -8752,8 +8751,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: + DOMINO (0)
+    m_LineSpacing: 1.1
+  m_Text: "\u30C9\u30DF\u30CE\n\u3042\u3068 3\u3053"
 --- !u!222 &1459520949
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8820,9 +8819,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
-    m_FontSize: 27
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
+    m_FontSize: 26
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -8831,8 +8830,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: NEXT
+    m_LineSpacing: 1.1
+  m_Text: "\u3064\u304E\u3078"
 --- !u!222 &1494687213
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8965,7 +8964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 83, y: -69}
+  m_AnchoredPosition: {x: 83, y: -72}
   m_SizeDelta: {x: 500, y: 28}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1523894033
@@ -8981,7 +8980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39607844, g: 0.49019608, b: 0.49019608, a: 1}
+  m_Color: {r: 0.23529412, g: 0.38431373, b: 0.39607844, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8989,8 +8988,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e518d81161c8e4b75be123b3a1d553d6, type: 3}
-    m_FontSize: 15
+    m_Font: {fileID: 12800000, guid: dc0cbdea1e3ee42edb98d15a0d912d63, type: 3}
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -9000,8 +8999,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 02   /   CHAIN REACTION
+    m_LineSpacing: 1.1
+  m_Text: "\u30C9\u30DF\u30CE\u3092 \u305F\u304A\u305D\u3046"
 --- !u!222 &1523894034
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9898,9 +9897,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da9367c15ea164f1490d2588c8062bdb, type: 3}
+    m_Font: {fileID: 12800000, guid: 757003d88a1934d32af2386a41118bb2, type: 3}
     m_FontSize: 20
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -9909,8 +9908,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: + RAMP
+    m_LineSpacing: 1.1
+  m_Text: "\u3055\u304B"
 --- !u!222 &1910891266
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10067,8 +10066,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e518d81161c8e4b75be123b3a1d553d6, type: 3}
-    m_FontSize: 16
+    m_Font: {fileID: 12800000, guid: dc0cbdea1e3ee42edb98d15a0d912d63, type: 3}
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -10078,8 +10077,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: EDIT MODE
+    m_LineSpacing: 1.1
+  m_Text: "\u3069\u3046\u3050\u3092 \u304A\u3053\u3046"
 --- !u!222 &1932790162
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -34,3 +34,7 @@ Barlow Regular and SemiBold, Copyright 2017 The Barlow Project Authors.
 Source: https://github.com/google/fonts/tree/main/ofl/barlow
 Licensed under the SIL Open Font License 1.1; see `Fonts/OFL.txt`.
 The same license is included in the player via `Assets/StreamingAssets/ThirdParty/Barlow-OFL.txt`.
+
+## 日本語の文字
+
+画面表示は [Zen Maru Gothic](https://github.com/google/fonts/tree/main/ofl/zenmarugothic) の Medium/Bold を使います。ひらがな・カタカナ中心の案内に合わせ、丸みのある字形を選びました。`Fonts/ZenMaruGothic/` に未改変のフォントと `OFL.txt`、取得元を示す `SOURCE.txt` を同梱しています。Dynamic フォントのデータを Player に含め、Mac/iPhone のシステムフォントに依存させません。Player にもライセンスを収録するため `Assets/StreamingAssets/ThirdParty/ZenMaruGothic-OFL.txt` に同一文を置いています。Barlow は従来素材として保持しています。

@@ -220,11 +220,11 @@ namespace KarakuriLabo.Tests
             yield return Tap(62, ButtonPoint(rotateButton));
             var rampPosition = ramp.transform.position;
             var rampRotation = ramp.transform.rotation;
-            Assert.That(label.text, Is.EqualTo("PLAY"));
+            Assert.That(label.text, Is.EqualTo("スタート"));
 
             yield return Tap(63, ButtonPoint(button));
             Assert.That(manager.State, Is.EqualTo(GameState.Playing));
-            Assert.That(label.text, Is.EqualTo("RESET"));
+            Assert.That(label.text, Is.EqualTo("やりなおす"));
             Assert.That(placement.SelectedObject, Is.Null);
             Assert.That(rotateButton.interactable, Is.False);
             for (var step = 0; step < 10; step++)
@@ -237,7 +237,7 @@ namespace KarakuriLabo.Tests
             ramp.transform.SetPositionAndRotation(rampPosition + Vector3.right, Quaternion.identity);
             yield return Tap(64, ButtonPoint(button));
             Assert.That(manager.State, Is.EqualTo(GameState.Edit));
-            Assert.That(label.text, Is.EqualTo("PLAY"));
+            Assert.That(label.text, Is.EqualTo("スタート"));
             Assert.That(ball.Body.isKinematic, Is.True);
             Assert.That(ball.Body.linearVelocity.sqrMagnitude, Is.LessThan(0.000001f));
             Assert.That(ball.Body.angularVelocity.sqrMagnitude, Is.LessThan(0.000001f));
@@ -280,12 +280,12 @@ namespace KarakuriLabo.Tests
                 Assert.That(manager.State, Is.EqualTo(GameState.Clear),
                     $"Run {run + 1} did not reach Goal. Ball position: {ball.transform.position}");
                 Assert.That(clearText.enabled, Is.True);
-                Assert.That(label.text, Is.EqualTo("RESET"));
+                Assert.That(label.text, Is.EqualTo("やりなおす"));
 
                 manager.ResetSimulation();
                 Assert.That(manager.State, Is.EqualTo(GameState.Edit));
                 Assert.That(clearText.enabled, Is.False);
-                Assert.That(label.text, Is.EqualTo("PLAY"));
+                Assert.That(label.text, Is.EqualTo("スタート"));
                 AssertPose(ball.transform, position, rotation);
                 Assert.That(ball.Body.isKinematic, Is.True);
                 yield return new WaitForFixedUpdate();

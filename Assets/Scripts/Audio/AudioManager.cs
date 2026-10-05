@@ -148,7 +148,7 @@ namespace KarakuriLabo
         {
             if (soundLabel != null)
             {
-                soundLabel.text = IsMuted ? "SOUND OFF" : "SOUND ON";
+                soundLabel.text = IsMuted ? GameText.SoundOff : GameText.SoundOn;
             }
         }
     }

@@ -98,11 +98,11 @@ namespace KarakuriLabo
         {
             if (progressLabel != null)
             {
-                progressLabel.text = $"DOMINOES {ToppledCount} / {requiredCount}" +
-                    (gameManager != null && gameManager.State == GameState.Clear ? "  /  CLEAR!"
-                        : gate != null ? (gate.IsOpen ? "  /  GATE OPEN" : gate.IsPressed
-                            ? "  /  OPENING GATE" : "  /  GATE CLOSED")
-                        : gameManager != null && gameManager.HasReachedGoal ? "  /  BALL IN GOAL" : "");
+                progressLabel.text = $"ドミノ {ToppledCount} / {requiredCount}" +
+                    (gameManager != null && gameManager.State == GameState.Clear ? " ／ できた！"
+                        : gate != null ? (gate.IsOpen ? " ／ あいたよ" : gate.IsPressed
+                            ? " ／ あくよ" : " ／ とびら")
+                        : gameManager != null && gameManager.HasReachedGoal ? " ／ ゴール！" : "");
             }
         }
     }

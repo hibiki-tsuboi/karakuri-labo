@@ -67,6 +67,23 @@ namespace KarakuriLabo
             }
         }
 
+        public void FreezeSimulation()
+        {
+            body = GetComponent<Rigidbody>();
+            if (body == null) return;
+
+            Vector3 position = body.position;
+            Quaternion rotation = body.rotation;
+            if (!body.isKinematic)
+            {
+                body.linearVelocity = Vector3.zero;
+                body.angularVelocity = Vector3.zero;
+            }
+            body.isKinematic = true;
+            body.interpolation = RigidbodyInterpolation.None;
+            transform.SetPositionAndRotation(position, rotation);
+        }
+
         private void FreezeForEditing()
         {
             body = GetComponent<Rigidbody>();

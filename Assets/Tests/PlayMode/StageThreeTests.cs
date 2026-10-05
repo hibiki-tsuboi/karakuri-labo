@@ -43,7 +43,7 @@ namespace KarakuriLabo.Tests
                 Assert.That(spawner.GetRemainingCount(index), Is.EqualTo(0));
                 Assert.That(spawner.AddPart(index), Is.Null);
             }
-            Assert.That(FindButton("AddSeesawButton").GetComponentInChildren<Text>().text, Does.Contain("(1)"));
+            Assert.That(FindButton("AddSeesawButton").GetComponentInChildren<Text>().text, Does.Contain("あと 1こ"));
             Assert.That(Object.FindObjectsByType<Button>(FindObjectsInactive.Include)
                 .Where(button => button.name == "AddRampButton" || button.name == "AddDominoButton")
                 .All(button => !button.gameObject.activeInHierarchy), Is.True);
@@ -67,11 +67,11 @@ namespace KarakuriLabo.Tests
             var position = ball.transform.position;
             manager.StartSimulation();
             yield return WaitForGoal(manager);
-            Assert.That(manager.State, Is.EqualTo(GameState.Playing));
+            Assert.That(manager.State, Is.EqualTo(GameState.Playing).Or.EqualTo(GameState.Failed));
             Assert.That(objective.HasRocked, Is.False);
             Assert.That(objective.IsComplete, Is.False);
             Assert.That(FindText("ClearText").enabled, Is.False);
-            Assert.That(FindText("SeesawProgress").text, Does.Contain("BALL IN GOAL"));
+            Assert.That(FindText("SeesawProgress").text, Does.Contain("ゴール！"));
             Assert.That(spawner.GetRemainingCount(0), Is.EqualTo(1));
             Assert.That(spawner.AddPart(0), Is.Null);
             manager.ResetSimulation();
@@ -116,7 +116,7 @@ namespace KarakuriLabo.Tests
             Assert.That(member.HasBallContact, Is.False);
             Assert.That(member.HasRocked, Is.False);
             Assert.That(objective.IsComplete, Is.False);
-            Assert.That(manager.State, Is.EqualTo(GameState.Playing));
+            Assert.That(manager.State, Is.EqualTo(GameState.Playing).Or.EqualTo(GameState.Failed));
             manager.ResetSimulation();
             yield return new WaitForFixedUpdate();
             Assert.That(Vector3.Distance(seesaw.transform.position, rootPosition), Is.LessThan(0.001f));
@@ -144,7 +144,7 @@ namespace KarakuriLabo.Tests
             yield return Tap(241, FindButton("AddSeesawButton"));
             var seesaw = placement.SelectedObject;
             Assert.That(seesaw, Is.Not.Null);
-            Assert.That(seesaw.DisplayName, Is.EqualTo("SEESAW"));
+            Assert.That(seesaw.DisplayName, Is.EqualTo("シーソー"));
             Assert.That(spawner.GetRemainingCount(0), Is.EqualTo(0));
             Assert.That(FindButton("AddSeesawButton").interactable, Is.False);
             var member = seesaw.GetComponentInChildren<SeesawGoalMember>();
@@ -172,7 +172,7 @@ namespace KarakuriLabo.Tests
                 Assert.That(member.HasRocked, Is.True);
                 Assert.That(objective.IsComplete, Is.True);
                 Assert.That(FindText("SeesawProgress").text, Does.Contain("1 / 1"));
-                Assert.That(FindText("GoalHint").text, Does.Contain("NEXT TO CONTINUE"));
+                Assert.That(FindText("GoalHint").text, Does.Contain("「つぎへ」で すすもう"));
                 Assert.That(Object.FindAnyObjectByType<StageManager>().CanAdvance, Is.True);
                 Assert.That(FindButton("NextButton").gameObject.activeInHierarchy, Is.True);
 
@@ -231,7 +231,7 @@ namespace KarakuriLabo.Tests
             Assert.That(Object.FindObjectsByType<SeesawGoalMember>(FindObjectsInactive.Exclude), Is.Empty);
             Assert.That(spawner.GetRemainingCount(0), Is.EqualTo(1));
             Assert.That(FindButton("AddSeesawButton").interactable, Is.True);
-            Assert.That(FindButton("AddSeesawButton").GetComponentInChildren<Text>().text, Does.Contain("(1)"));
+            Assert.That(FindButton("AddSeesawButton").GetComponentInChildren<Text>().text, Does.Contain("あと 1こ"));
         }
 
         private static IEnumerator LoadScene(string name)

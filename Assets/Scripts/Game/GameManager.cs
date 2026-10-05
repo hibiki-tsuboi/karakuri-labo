@@ -18,6 +18,7 @@ namespace KarakuriLabo
 
         public GameState State { get; private set; } = GameState.Edit;
         public bool HasReachedGoal { get; private set; }
+        public AttemptFailure FailureReason { get; private set; }
         public event Action<GameState> StateChanged;
 
         private void OnEnable()
@@ -175,6 +176,7 @@ namespace KarakuriLabo
             ui.SetCleared(false);
             State = GameState.Playing;
             HasReachedGoal = false;
+            FailureReason = AttemptFailure.None;
             if (objective != null)
             {
                 objective.BeginAttempt();
@@ -209,6 +211,7 @@ namespace KarakuriLabo
             // and placement controls only after every object is back in place.
             State = GameState.Edit;
             HasReachedGoal = false;
+            FailureReason = AttemptFailure.None;
             if (objective != null)
             {
                 objective.ResetProgress();
@@ -234,6 +237,45 @@ namespace KarakuriLabo
         private bool CanResetSimulation()
         {
             return Application.isPlaying && State != GameState.Edit;
+        }
+
+        public bool FailAttempt(AttemptFailure reason)
+        {
+            if (State != GameState.Playing || reason == AttemptFailure.None)
+            {
+                return false;
+            }
+
+            // A goal reached on the last physics step takes priority over failure.
+            TryCompleteStage();
+            if (State != GameState.Playing)
+            {
+                return false;
+            }
+
+            State = GameState.Failed;
+            FailureReason = reason;
+            foreach (PhysicsObject physicsObject in capturedObjects)
+            {
+                if (physicsObject != null)
+                {
+                    physicsObject.FreezeSimulation();
+                }
+            }
+            ui.SetCleared(false);
+            StateChanged?.Invoke(State);
+            return true;
+        }
+
+        public bool RetryAttempt()
+        {
+            if (State != GameState.Failed)
+            {
+                return false;
+            }
+            ResetSimulation();
+            StartSimulation();
+            return State == GameState.Playing;
         }
 
         private void CaptureState()

@@ -87,6 +87,7 @@ namespace KarakuriLabo.Editor
                     StyleStage();
                     StyleLighting();
                     StyleHud();
+                    JapaneseSceneSetup.Configure(GameObject.Find("HUD").transform);
                     string after = string.Join("\n", scene.GetRootGameObjects().Select(PhysicsSignature).Where(value => value.Length > 0));
                     if (after != physics)
                     {

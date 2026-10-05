@@ -4,6 +4,7 @@ namespace KarakuriLabo
     {
         Edit,
         Playing,
-        Clear
+        Clear,
+        Failed
     }
 }

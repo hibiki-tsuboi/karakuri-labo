@@ -35,7 +35,7 @@ namespace KarakuriLabo
                 return;
             }
 
-            clearText.text = "CLEAR!";
+            clearText.text = GameText.Clear;
             clearText.enabled = cleared;
         }
     }

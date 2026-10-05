@@ -147,7 +147,7 @@ namespace KarakuriLabo
             if (followButton != null)
             {
                 followButton.interactable = CanNavigate && manager != null && manager.State == GameState.Playing;
-                followButton.GetComponentInChildren<Text>().text = IsFollowing ? "FOLLOWING" : "FOLLOW BALL";
+                followButton.GetComponentInChildren<Text>().text = IsFollowing ? "ボールを みてるよ" : "ボールを みる";
             }
         }
 

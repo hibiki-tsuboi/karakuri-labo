@@ -1,0 +1,5 @@
+Zen Maru Gothic Medium and Bold
+Source: https://github.com/google/fonts/tree/main/ofl/zenmarugothic
+Upstream: https://github.com/googlefonts/zen-marugothic
+Downloaded: 2026-10-05
+Unmodified font files. License: SIL Open Font License 1.1 (see OFL.txt).

@@ -85,9 +85,9 @@ namespace KarakuriLabo
         {
             if (progressLabel != null)
             {
-                progressLabel.text = $"SEESAW {(HasRocked ? 1 : 0)} / 1" +
-                    (gameManager != null && gameManager.State == GameState.Clear ? "  /  CLEAR!"
-                        : gameManager != null && gameManager.HasReachedGoal ? "  /  BALL IN GOAL" : "");
+                progressLabel.text = $"シーソー {(HasRocked ? 1 : 0)} / 1" +
+                    (gameManager != null && gameManager.State == GameState.Clear ? " ／ できた！"
+                        : gameManager != null && gameManager.HasReachedGoal ? " ／ ゴール！" : "");
             }
         }
     }

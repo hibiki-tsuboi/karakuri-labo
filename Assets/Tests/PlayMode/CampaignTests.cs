@@ -28,11 +28,11 @@ namespace KarakuriLabo.Tests
                 Assert.That(campaign[i], Is.EqualTo(path));
                 yield return SceneManager.LoadSceneAsync(path);
                 yield return null;
-                Assert.That(Label("StageLabel").text, Does.StartWith($"{i + 1:00}   /"));
+                Assert.That(Label("StageLabel").text, Does.StartWith($"ステージ {i + 1}　"));
                 var transforms = Object.FindObjectsByType<Transform>(FindObjectsInactive.Include);
                 Assert.That(transforms.Any(t => t.name.ToLowerInvariant().Contains("domino")), Is.False, path);
                 Assert.That(Object.FindObjectsByType<Text>(FindObjectsInactive.Include)
-                    .Any(t => t.text.ToUpperInvariant().Contains("DOMINO")), Is.False, path);
+                    .Any(t => t.text.ToUpperInvariant().Contains("ドミノ")), Is.False, path);
                 Assert.That(Object.FindAnyObjectByType<DominoObjective>(), Is.Null);
                 Assert.That(Object.FindAnyObjectByType<DominoGate>(), Is.Null);
                 var spawner = Object.FindAnyObjectByType<PartSpawner>();
@@ -41,7 +41,7 @@ namespace KarakuriLabo.Tests
                 {
                     var part = spawner.AddPart(slot);
                     Assert.That(part, Is.Not.Null);
-                    Assert.That(part.DisplayName, Does.Not.Contain("DOMINO"));
+                    Assert.That(part.DisplayName, Does.Not.Contain("ドミノ"));
                     Assert.That(part.GetComponentInChildren<DominoChainMember>(true), Is.Null);
                 }
                 Assert.That(spawner.CanAddPart(count), Is.False);
@@ -83,7 +83,7 @@ namespace KarakuriLabo.Tests
                 }
                 else
                 {
-                    Assert.That(Label("GoalHint").text, Does.Contain("ALL STAGES CLEAR"));
+                    Assert.That(Label("GoalHint").text, Does.Contain("ぜんぶ クリア！"));
                     Assert.That(progression.TryAdvance(), Is.False);
                 }
             }

@@ -38,7 +38,7 @@ namespace KarakuriLabo.Tests
             Assert.That(spawner.GetRemainingCount(0), Is.EqualTo(1));
             Assert.That(spawner.CanAddPart(0), Is.True);
             Assert.That(button.interactable, Is.True);
-            Assert.That(label.text, Does.Contain("(1)"));
+            Assert.That(label.text, Does.Contain("あと 1こ"));
             foreach (var index in new[] { -1, 1, 2 })
             {
                 Assert.That(spawner.GetRemainingCount(index), Is.EqualTo(0));
@@ -53,12 +53,12 @@ namespace KarakuriLabo.Tests
             yield return Tap(161, button);
             var ramp = placement.SelectedObject;
             Assert.That(ramp, Is.Not.Null);
-            Assert.That(ramp.DisplayName, Is.EqualTo("RAMP"));
+            Assert.That(ramp.DisplayName, Is.EqualTo("さか"));
             Assert.That(FindParts().Length, Is.EqualTo(1));
             Assert.That(spawner.GetRemainingCount(0), Is.EqualTo(0));
             Assert.That(spawner.CanAddParts, Is.False);
             Assert.That(button.interactable, Is.False);
-            Assert.That(label.text, Does.Contain("(0)"));
+            Assert.That(label.text, Does.Contain("あと 0こ"));
             Assert.That(placement.IsDragging, Is.False);
             yield return Tap(162, button);
             Assert.That(FindParts().Length, Is.EqualTo(1), "Tapping exhausted stock must not create a duplicate.");
@@ -184,14 +184,14 @@ namespace KarakuriLabo.Tests
             Assert.That(original == null, Is.True);
             Assert.That(FindParts().Single(), Is.SameAs(replacement));
             Assert.That(spawner.GetRemainingCount(0), Is.EqualTo(0));
-            Assert.That(FindButton("AddRampButton").GetComponentInChildren<Text>().text, Does.Contain("(0)"));
+            Assert.That(FindButton("AddRampButton").GetComponentInChildren<Text>().text, Does.Contain("あと 0こ"));
             Assert.That(placement.SelectObject(replacement), Is.True);
             Assert.That(placement.DeleteSelected(), Is.True);
             yield return null;
             Assert.That(FindParts(), Is.Empty);
             Assert.That(spawner.GetRemainingCount(0), Is.EqualTo(1));
             Assert.That(FindButton("AddRampButton").interactable, Is.True);
-            Assert.That(FindButton("AddRampButton").GetComponentInChildren<Text>().text, Does.Contain("(1)"));
+            Assert.That(FindButton("AddRampButton").GetComponentInChildren<Text>().text, Does.Contain("あと 1こ"));
         }
 
         [UnityTest]
@@ -300,7 +300,7 @@ namespace KarakuriLabo.Tests
             Assert.That(destinationManager.State, Is.EqualTo(GameState.Edit));
             Assert.That(destinationManager.HasReachedGoal, Is.False);
             Assert.That(destinationAudio.IsMuted, Is.True);
-            Assert.That(FindButton("SoundButton").GetComponentInChildren<Text>().text, Is.EqualTo("SOUND OFF"));
+            Assert.That(FindButton("SoundButton").GetComponentInChildren<Text>().text, Is.EqualTo("おと：なし"));
             Assert.That(FindParts(), Is.Empty);
             Assert.That(Object.FindAnyObjectByType<PartSpawner>().GetRemainingCount(0), Is.EqualTo(1));
             Assert.That(Object.FindAnyObjectByType<SeesawObjective>().HasRocked, Is.False);
@@ -332,7 +332,7 @@ namespace KarakuriLabo.Tests
             while (Time.time < deadline)
             {
                 yield return new WaitForFixedUpdate();
-                Assert.That(manager.State, Is.EqualTo(GameState.Playing),
+                Assert.That(manager.State, Is.EqualTo(GameState.Playing).Or.EqualTo(GameState.Failed),
                     "The ball must not reach the goal without a correctly placed ramp.");
                 Assert.That(clearText.enabled, Is.False);
             }

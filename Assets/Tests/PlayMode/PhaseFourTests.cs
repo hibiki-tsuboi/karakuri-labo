@@ -197,7 +197,7 @@ namespace KarakuriLabo.Tests
             Assert.That(selectedPart.IsSelected, Is.True);
             var label = Object.FindObjectsByType<Text>(FindObjectsInactive.Include)
                 .Single(text => text.name == "GoalHint");
-            Assert.That(label.text, Does.Contain("DOMINO SELECTED"));
+            Assert.That(label.text, Does.Contain("ドミノを おしたまま"));
             QueueTouch(81, TouchPhase.Moved, destination);
             yield return null;
             yield return null;
